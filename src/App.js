@@ -14,22 +14,10 @@ class App extends Component {
           <Provider store={store}>
           <BrowserRouter>
             <div className="App">
-                <Main />
+              <Main />
             </div>
           </BrowserRouter>
-          </Provider>
-            <BrowserRouter>
-                <div className="App">
-                    <Main />
-                </div>
-            </BrowserRouter>
-                  <Provider store={store}>
-                  <BrowserRouter>
-                    <div className="App">
-                      <Main />
-                    </div>
-                  </BrowserRouter>
-                </Provider>
+        </Provider>
         );
     }
 }
