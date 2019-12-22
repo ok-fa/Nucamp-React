@@ -1,5 +1,3 @@
-//repo for week 3 is https://github.com/ok-fa/React-Week-3-Workshop
-
 import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
@@ -7,44 +5,42 @@ import { baseUrl } from '../shared/baseUrl';
 import { Loading } from './LoadingComponent';
 import { Fade, Stagger } from 'react-animation-components';
 
-function RenderPartner ({partner}){
-    if  (partner){
-        return(
-            <React.Fragment>    
+function RenderPartner({partner}) {
+    if (partner) {
+        return (
+            <React.Fragment>
                 <Media object src={baseUrl + partner.image} alt={partner.name} width="150" />
                 <Media body className="ml-5 mb-4">
-                    <Media heading > {partner.name} </Media>
-                    {partner.description}         
+                    <Media heading >{partner.name}</Media>
+                    {partner.description}
                 </Media>
-            </React.Fragment>    
-        )
-    }
-    return <div></div>
+            </React.Fragment>
+        );
+    } 
+    return <div />;
 }
 
 function PartnerList(props) {
     const partners = props.partners.partners.map(partner => {
-        return(
+        return (
             <Fade in key={partner.id}>
-                <Media tag="li" key={partner.id}>
+                <Media tag="li">
                     <RenderPartner partner={partner} />
                 </Media>
-            </Fade>    
-        )
-    })
+            </Fade>
+        );
+    });
 
-    if (props.partners.isLoading){
+    if (props.partners.isLoading) {
         return <Loading />;
     }
-
-    if(props.partners.errMess){
-        return(
+    if (props.partners.errMess) {
+        return (
             <div className="col">
                 <h4>{props.partners.errMess}</h4>
             </div>
         );
     }
-
     return (
         <div className="col mt-4">
             <Media list>
